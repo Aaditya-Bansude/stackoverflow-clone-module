@@ -6,7 +6,7 @@ const QuestionSchema = mongoose.Schema({
     questionTags: {type: [String], required: "Question must have a tags"},
     noofAnswers: {type: Number, default: 0},
     upVotes: {type: [String], default: []},
-    downVotes: {type: [String],default: []},
+    downVotes: {type: [String], default: []},
     userPosted: {type: String, required: "Question must have an author"},
     userId: {type: String},
     askedOn: {type: Date, default: Date.now},

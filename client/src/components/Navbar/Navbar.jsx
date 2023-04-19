@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
 
@@ -13,12 +13,23 @@ const Navbar = () => {
 
     const dispatch = useDispatch()
     var User = useSelector((state) => (state.currentUserReducer))
-    const navigate = useNavigate()
+    const id = JSON.parse(localStorage.getItem('Profile'))?.result?._id
+    const users = useSelector((state) => state.usersReducer)
+    const authUser = users.filter((user) => user._id === id)[0]
+    var subColor = "transperent"
+
+    if(authUser?.subscriptionPlan === "gold"){
+        subColor = "gold" 
+    }else if(authUser?.subscriptionPlan === "silver"){
+        subColor = "silver"
+    }else if(authUser?.subscriptionPlan === "free"){
+        subColor = "#ef8236"
+    }
 
     const handleLogout = () => {
         dispatch({type: 'LOGOUT'})
-        navigate('/')
         dispatch(setCurrentUser(null))
+        window.location.reload(true)
     }
 
     useEffect(() => {
@@ -29,6 +40,7 @@ const Navbar = () => {
                 handleLogout();
             }
         }
+        
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
     },[dispatch])
 
@@ -38,9 +50,13 @@ const Navbar = () => {
                 <Link to='/' className='nav-item nav-logo'>
                     <img src={StackLogo} alt="StackLogo" height='30'/>
                 </Link>
-                <Link to='/' className='nav-item nav-btn'>About</Link>
-                <Link to='/' className='nav-item nav-btn'>Products</Link>
-                <Link to='/' className='nav-item nav-btn'>For Teams</Link>
+                <NavLink to='/About' className='nav-item nav-btn ' >About</NavLink>
+                <NavLink to='/Products' className='nav-item nav-btn' >Products</NavLink>
+                <NavLink to='/Community' className='nav-item nav-btn' >Community</NavLink>
+                <NavLink to='/Subscription' className='nav-item nav-btn' >
+                    Subscription
+                    <Avatar backgroundColor={subColor} px='1px' py='1px' color='white' />
+                </NavLink>
                 <form>
                     <input type="text" placeholder="search..."/>
                     <img src={SearchLogo} alt="SearchLogo" width="18" className="SearchIcon"/>
@@ -50,7 +66,7 @@ const Navbar = () => {
                         <>
                             <Avatar backgroundColor='#009dff' px='10px' py='7px' borderRadius='50%' color='white'>
                                 <Link to={`/Users/${User?.result?._id}`} style={{color: 'white', textDecoration: 'none'}} >
-                                    {User.result.name.charAt(0).toUpperCase()}
+                                    {User?.result?.name.charAt(0).toUpperCase()}
                                 </Link>
                             </Avatar>
                             <button className="nav-item nav-links" onClick={handleLogout}>Log Out</button>

@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <div className='home-container-1'>
       <LeftSidebar />
-      
       <div className='home-container-2'>
         <Mainbar />
         <RightSidebar />

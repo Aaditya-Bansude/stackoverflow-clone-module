@@ -5,6 +5,9 @@ import dotenv from 'dotenv'
 import userRoutes from './routes/users.js'
 import questionRoutes from './routes/questions.js'
 import answerRoutes from './routes/answers.js'
+import paymentRoutes from './routes/payment.js'
+import communityRoutes from './routes/community.js'
+import chatbotRoutes from './routes/chatbot.js'
 
 const app = express();
 dotenv.config();
@@ -21,6 +24,9 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes)
 app.use('/questions', questionRoutes)
 app.use('/answer', answerRoutes)
+app.use('/payment', paymentRoutes)
+app.use('/community', communityRoutes)
+app.use('/chatbot', chatbotRoutes)
 
 const PORT = process.env.PORT || 5000
 
@@ -29,3 +35,4 @@ const DATABASE_URL  = process.env.CONNECTION_URL
 mongoose.connect(DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => {console.log(`server running on port ${PORT}`)}))
     .catch((err) => console.log(err.message))
+

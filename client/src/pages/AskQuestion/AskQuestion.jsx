@@ -3,11 +3,16 @@ import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import './AskQuestion.css'
 import {askQuestion} from '../../actions/question'
+import { updateNumber } from '../../actions/users'
+import Uploading from '../../assets/Uploading.gif'
 
 const AskQuestion = () => {
+
     const [questionTitle, setQuestionTitle] = useState('')
     const [questionBody, setQuestionBody] = useState('')
     const [questionTags, setQuestionTags] = useState('')
+    const [uploading, setUploading] = useState(false)
+    const currentDate = Number((new Date().getFullYear()) + ("0" + (new Date().getMonth()+1)).slice(-2) + ("0" + new Date().getDate()).slice(-2))
 
     const dispatch = useDispatch()
     var User = useSelector((state) => (state.currentUserReducer))
@@ -15,7 +20,8 @@ const AskQuestion = () => {
 
     const handleSubmit = (e) => { 
         e.preventDefault()
-        dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User?.result?._id}, navigate))
+        dispatch(askQuestion({questionTitle, questionBody, questionTags, userPosted: User.result.name, userId: User?.result?._id}, navigate, setUploading))
+        dispatch(updateNumber(User?.result?._id, {currentDate: currentDate, noofQuestions: (User?.result?.noofQuestions + 1)}))
     }
 
     const handleEnter = (e) => {
@@ -46,7 +52,16 @@ const AskQuestion = () => {
                             <input type="text" id="ask-ques-tags" onChange={(e) => {setQuestionTags(e.target.value.split(" "))}} placeholder='e.g. (xml, javascript, wordpress)'/>
                         </label>
                     </div>
-                    <input type="submit" value="Review your question" className='review-ques-btn'/>
+                    <div className='submit-upload'>
+                        <input type="submit" value="Review your question" className='review-ques-btn'/>
+                        {
+                            uploading && 
+                            <>
+                                <img src={Uploading} alt="Uploading..." className='uploading-symbol'/>
+                                <p className='uploading-note'>Uploading... please do not refresh the page</p>
+                            </>
+                        }
+                    </div>
                 </form>
             </div>
         </div>

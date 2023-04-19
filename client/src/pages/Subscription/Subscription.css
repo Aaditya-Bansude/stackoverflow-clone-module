@@ -1,0 +1,123 @@
+.sub-section {
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f1f2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+.sub-container-first, .sub-container-second, .sub-container-third {
+    width: 160px;
+    height: 400px;
+    margin: 5px 20px;
+    padding: 20px 20px;
+    background: white;
+    font-family: 'Open Sans', sans-serif;
+    /* line-height: 40px; */
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.sub-container-first{
+    border: solid 3px #ef8236;
+}
+.sub-container-first:hover{
+    width: 180px;
+    height: 420px;
+    transition: 0.3s;
+}
+
+.sub-container-second{
+    border: solid 3px silver;
+}
+.sub-container-second:hover{
+    width: 180px;
+    height: 420px;
+    transition: 0.3s;
+}
+
+.sub-container-third{
+    border: solid 3px gold;
+}
+.sub-container-third:hover{
+    width: 180px;
+    height: 420px;
+    transition: 0.3s;
+}
+
+.sub-section h2 {
+    margin: 5px 0px;
+}
+.sub-section .features {
+    padding: 0px 10px;
+    /* list-style-type: none; */
+}
+.sub-section li {
+    padding: 2px 0px;
+    text-align: justify;
+    font-size: small;
+}
+
+.sub-section .price {
+    font-size: xx-large;
+    margin: 20px 10px;
+    padding: 10px 10px;
+    background: #292b2e;
+    color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.sub-section .price p{
+    font-size: small;
+    font-weight: normal;
+}
+
+.sub-section button{
+    margin: 20px 0px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background: #292b2e;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.sub-container-first button:hover {
+    background: #ef8236;
+    color: black;
+} 
+
+.sub-container-second button:hover {
+    background: silver;
+    color: black;
+} 
+
+.sub-container-third button:hover {
+    background: gold;
+    color: black;
+} 
+
+.tag-ribbon {
+    width: 100px;
+    background: #1B8DC8;
+    position:relative;
+    top: 0px;
+    left: -40px;
+    text-align: center;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    font-size: 0.65em;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.disable-btn:hover{
+    content: attr(title);
+}

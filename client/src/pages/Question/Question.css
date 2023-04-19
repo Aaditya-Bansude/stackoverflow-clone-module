@@ -105,8 +105,8 @@
 }
 
 .post-ans-container form .post-ans-btn{
-    margin: 20px 0px;
-    padding: 10px 10px;
+    margin: 40px 0px;
+    padding: 10px;
     background-color: #009dff;
     color: white;
     border: solid 1px #009dff;
@@ -128,4 +128,19 @@
     font-size: 14px;
     line-height: 18px;
     white-space: pre-line;
+}
+
+.submit-upload{
+    display: flex;
+}
+
+.uploading-symbol{
+    margin: 50px 10px;
+    height: 40px;
+}
+
+.uploading-note{
+    color: #939292;
+    font-size: 14px;
+    margin: 60px -10px;
 }

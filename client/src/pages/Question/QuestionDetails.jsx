@@ -10,7 +10,7 @@ import './Question.css'
 import Avatar from '../../components/Avatar/Avatar'
 import DisplayAnswers from './DisplayAnswers'
 import { postAnswer, deleteQuestion, voteQuestion } from '../../actions/question'
-
+import Uploading from '../../assets/Uploading.gif'
 
 const QuestionDetails = () => {
 
@@ -21,7 +21,8 @@ const QuestionDetails = () => {
     const User = useSelector((state) => (state.currentUserReducer))
     const questionsList = useSelector(state => state.questionsReducer)
     const [answer, setAnswer] = useState('')
-    const url = 'http://localhost:3000'+location.pathname
+    const [uploading, setUploading] = useState(false)
+    const url = process.env.CLIENT_URL+location.pathname
 
     const handleSubmit = (e, answerLength) => {
         e.preventDefault()
@@ -33,7 +34,7 @@ const QuestionDetails = () => {
             if(answer === ''){
                 alert('Enter an answer before submitting')
             }else{
-                dispatch(postAnswer({id, noofAnswers: answerLength + 1, answerBody: answer, userAnswered: User.result.name, userId: User.result._id}))
+                dispatch(postAnswer({id, noofAnswers: answerLength + 1, answerBody: answer, userAnswered: User.result.name, userId: User.result._id}, setUploading))
             }
         }
     }
@@ -113,7 +114,16 @@ const QuestionDetails = () => {
                                     <h3>Your Answer</h3>
                                     <form onSubmit={(e) => {handleSubmit(e, question.answer.length) }}>
                                         <textarea name="" id="" cols="30" rows="10" onChange={e => setAnswer(e.target.value)}></textarea><br />
-                                        <input type="submit" className='post-ans-btn' value='Post Your Answer'/>
+                                        <div className='submit-upload'>
+                                            <input type="submit" value='Post Your Answer'className='post-ans-btn' />
+                                            {
+                                                uploading && 
+                                                <>
+                                                    <img src={Uploading} alt="Uploading..." className='uploading-symbol'/>
+                                                    <p className='uploading-note'>Uploading... please do not refresh the page</p>
+                                                </>
+                                            }
+                                        </div>
                                     </form>
                                     <p>
                                         Browse other Question Tagged

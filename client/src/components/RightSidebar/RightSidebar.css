@@ -64,3 +64,11 @@
     border-radius: 2px;
     font-size: 13px;
 }
+
+.chatbot-icon{
+    margin: -420px 0px 0px 260px;
+    position: fixed;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

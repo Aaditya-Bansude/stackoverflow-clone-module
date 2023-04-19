@@ -4,21 +4,23 @@ import {useNavigate} from 'react-router-dom'
 import './Auth.css'
 import StackIcon from '../../assets/StackIcon.png'
 import {signup, login} from '../../actions/auth'
+import Loading from '../../assets/Loading.gif'
 
 const Auth = () => {
-    
+
     const [isSignup, setSignup] = useState(false)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const [loading, setLoading] = useState(false)
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
     
     const handleSwitch = () => {
         setSignup(!isSignup)
     }
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         if(!email){
@@ -31,9 +33,9 @@ const Auth = () => {
             if(!name){
                 alert("Enter a name to continue")
             }
-            dispatch(signup({name, email, password}, navigate))
+            dispatch(signup({name, email, password}, navigate, setLoading))
         }else{
-            dispatch(login({email, password}, navigate))
+            dispatch(login({email, password}, navigate, setLoading))
         }
     }
     
@@ -90,7 +92,7 @@ const Auth = () => {
                             </label>
                         )
                     }
-                    <button type='submit' className='auth-btn'>{isSignup ? 'Sign up': 'Log in'}</button>
+                    <button type='submit' className='auth-btn'>{isSignup ?  (loading ? <img src={Loading} alt="Loading" height='15px'/> : 'Sign up') :  (loading ? <img src={Loading} alt="Loading" height='15px'/> : 'Log in')} </button>
                     {
                         isSignup && (
                             <p style={{color: "#666767", fontSize: "13px"}}>

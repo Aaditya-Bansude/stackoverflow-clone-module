@@ -1,11 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {useSelector} from 'react-redux'
+import { QueryClientProvider, QueryClient } from "react-query"
 import PenLogo from '../../assets/PenLogo.svg'
 import CommentLogo from '../../assets/CommentLogo.svg'
 import StackIconBlack from '../../assets/StackIconBlack.svg'
 import './RightSidebar.css'
+import Chatbot from '../Chatbot/Chatbot'
+import ChatbotLogo from '../../assets/ChatbotLogo.png'
 
 const RightSidebar = () => {
+
+  const User = useSelector((state) => (state.currentUserReducer))
   const tags = ['c','css','express','firebase','html','java','javascript','mern','mongodb','mysql','next.js','node.js','php','python','reactjs']
+  const queryClient = new QueryClient()
+  const [chatbox, setChatbox] = useState(false)
+
+  const checkUser = () => {
+    if(User){
+      setChatbox(!chatbox)
+    }else{
+      alert('login or signup to continue')
+    }
+  }
+
   return (
     <aside className='right-sidebar'>
       <div class="widget">
@@ -60,6 +77,18 @@ const RightSidebar = () => {
             ))
           }
         </div>
+      </div>
+      <div>
+        <button onClick={checkUser} className='chatbot-icon' >
+          <img src={ChatbotLogo} alt="Chatbot" height="70px"/> 
+        </button>
+        {
+          chatbox && (
+            <QueryClientProvider client={queryClient}>
+              <Chatbot />
+            </QueryClientProvider>
+          )
+        }
       </div>
     </aside>
   )

@@ -11,31 +11,31 @@ const Tags = () => {
     },{
         id: 2,
         tagName: "python",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagDesc: "Python is a multi-paradigm, dynamically typed, multi-purpose programming language. It is designed to be quick to learn, understand, and use, and enforces a clean and uniform syntax. "
     },{
         id: 3,
         tagName: "c#",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagDesc: "C# (pronounced 'see sharp') is a high-level, statically typed, multi-paradigm programming language developed by Microsoft. C# code usually targets Microsoft's .NET family of tools and run-times."
     },{
         id: 4,
         tagName: "java",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagDesc: "Java is a high-level object-oriented programming language. Use this tag when you're having problems using or understanding the language itself. This tag is frequently used alongside other tags for libraries."
     },{
         id: 5,
         tagName: "html",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagDesc: "HTML (HyperText Markup Language) is the markup language for creating web pages and other information to be displayed in a web browser. Questions regarding HTML should include a minimal reproducible example."
     },{
         id: 6,
         tagName: "css",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagDesc: "CSS (Cascading Style Sheets) is a representation style sheet language used for describing the look and formatting of HTML (HyperText Markup Language), XML (Extensible Markup Language) documents and SVG elements."
     },{
         id: 7,
         tagName: "reactjs",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagDesc: "React is a JavaScript library for building user interfaces. It uses a declarative, component-based paradigm and aims to be efficient and flexible."
     },{
         id: 8,
-        tagName: "mongodb",
-        tagDesc: "For questions regarding programming in ECMAScript (JAVA Script/JS) and its various dialects/implementations (excluding ActionScripts) Please include all relevent tags on your question."
+        tagName: "Django",
+        tagDesc: "Django is an open-source server-side web application framework written in Python. It is designed to reduce the effort required to create complex data-driven websites and web applications, with a special focus on less code."
     }]
 
     return (

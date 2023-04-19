@@ -1,5 +1,5 @@
 import React from 'react'
-import {useLocation, useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate, useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import './Mainbar.css'
 import QuestionsList from './QuestionsList'
@@ -7,18 +7,33 @@ import QuestionsList from './QuestionsList'
 const Mainbar = () => {
 
   const location = useLocation()
-  var User = useSelector((state) => (state.currentUserReducer))
+  // var User = useSelector((state) => (state.currentUserReducer))
+  const id = JSON.parse(localStorage.getItem('Profile'))?.result?._id
+  const users = useSelector((state) => state.usersReducer)
+  const User = users.filter((user) => user._id === id)[0]
   const navigate = useNavigate();
 
   const questionsList = useSelector(state => state.questionsReducer)
 
   const checkUser = () => {
-    if(User === null){
+    if(User === undefined){
       alert("login or signup to ask a question")
       navigate('/Auth')
     }
     else{
-      navigate('/AskQuestion')
+      if(User?.subscriptionPlan === "free" && User?.noofQuestions < 1){
+        navigate('/AskQuestion')
+      }
+      else if(User?.subscriptionPlan === "silver" && User?.noofQuestions < 5){
+        navigate('/AskQuestion')
+      }
+      else if(User?.subscriptionPlan === "gold"){
+        navigate('/AskQuestion')
+      }
+      else{
+        alert("You've reached your daily questions limit for current plan.\nUpgrade your plan to continue or wait for next day")
+        navigate('/Subscription')
+      }
     }
   }
 
@@ -45,42 +60,3 @@ const Mainbar = () => {
 }
 
 export default Mainbar
-
-
-// var questionsList = [
-//   {
-//     _id: 1,
-//     upVotes: 2,
-//     downVotes: 1,
-//     noofAnswers: 3,
-//     questionTitle: "What is recursive function?",
-//     questionBody: "It meant to be",
-//     questionTags: ["javascript", "python", "R"],
-//     userPosted: "xyz",
-//     userId: 1,
-//     askedOn: "jan 1",
-//     answer: [{
-//       answerBody: "Answer",
-//       userAnswered: "abc",
-//       answeredOn: "jan 2",
-//       userId: 2
-//     }]
-//   },{
-//     _id: 2,
-//     upVotes: 4,
-//     downVotes: 1,
-//     noofAnswers: 2,
-//     questionTitle: "What is recursive function?",
-//     questionBody: "It meant to be",
-//     questionTags: ["javascript", "python", "R"],
-//     userPosted: "xyz",
-//     userId: 2,
-//     askedOn: "jan 1",
-//     answer: [{
-//       answerBody: "Answer",
-//       userAnswered: "abc",
-//       answeredOn: "jan 2",
-//       userId: 2
-//     }]
-//   }
-// ]

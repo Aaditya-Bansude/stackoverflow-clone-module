@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.835e7e15.css",
+    "main.js": "/static/js/main.85ef0abe.js",
+    "static/media/Loader.gif": "/static/media/Loader.353c94c52c5457d64e88.gif",
+    "static/media/Loading.gif": "/static/media/Loading.42aaa181adb3af3bef08.gif",
+    "static/media/StackLogo.png": "/static/media/StackLogo.e2c42001135addbad748.png",
+    "static/media/DisLikeBlueIcon.png": "/static/media/DisLikeBlueIcon.59634acf031bbf34ad1e.png",
+    "static/media/LikeBlueIcon.png": "/static/media/LikeBlueIcon.4f94600ed8eb64691da2.png",
+    "static/media/DisLikeIcon.png": "/static/media/DisLikeIcon.5c0e0ff7dc4a0d1d40dc.png",
+    "static/media/LikeIcon.png": "/static/media/LikeIcon.455c140bbc66ac702a49.png",
+    "static/media/Uploading.gif": "/static/media/Uploading.ab0059c7ec1a831c6f39.gif",
+    "static/media/ChatbotLogo.png": "/static/media/ChatbotLogo.ddd7504365015ebb3cdc.png",
+    "static/media/AddFriend.png": "/static/media/AddFriend.c93c72be3383e82158dc.png",
+    "static/media/DownVote.png": "/static/media/DownVote.f9550a24cc6fb527b1e1.png",
+    "static/media/RemoveFriend.png": "/static/media/RemoveFriend.a2b21629d2b0417f3447.png",
+    "static/media/SendIcon.png": "/static/media/SendIcon.f05c495951d139b41386.png",
+    "static/media/Globe.svg": "/static/media/Globe.d1954f3d888d5c5f17f307f67b96f657.svg",
+    "index.html": "/index.html",
+    "static/media/SearchLogo.svg": "/static/media/SearchLogo.bf7c00a4cf3b50288170bca48fe9fd9a.svg",
+    "static/media/PenLogo.svg": "/static/media/PenLogo.20f1e0eb4502cc71ae0c58b5a349ff26.svg",
+    "static/media/CommentLogo.svg": "/static/media/CommentLogo.c78b3504fc0d42b86b6594afb6b8905b.svg",
+    "static/media/StackIconBlack.svg": "/static/media/StackIconBlack.d94c573cf4a8bfd616a54f22e96ce82e.svg",
+    "main.835e7e15.css.map": "/static/css/main.835e7e15.css.map",
+    "main.85ef0abe.js.map": "/static/js/main.85ef0abe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.835e7e15.css",
+    "static/js/main.85ef0abe.js"
+  ]
+}
